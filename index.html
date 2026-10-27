@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AyeTune | Studio Music Player</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Bar -->
+    <header class="studio-header">
+      <div class="brand">
+        <i class="fa-solid fa-compact-disc brand-icon"></i>
+        <span>AYE<b>TUNE</b></span>
+      </div>
+
+      <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search tracks or artists..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="header-actions">
+        <!-- Hidden input for uploading MP3 files -->
+        <input type="file" id="fileUpload" accept="audio/*" multiple style="display: none;" />
+        <button id="uploadBtn" class="upload-btn">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Add Song
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="studio-workspace">
+      <!-- Left Panel: Library -->
+      <section class="library-panel">
+        <div class="panel-header">
+          <div>
+            <h3>Playlist</h3>
+            <p id="playlistCount">0 tracks available</p>
+          </div>
+        </div>
+
+        <nav class="genre-tabs" id="categoryContainer">
+          <button class="genre-tab active" data-category="All">All Tracks</button>
+          <button class="genre-tab" data-category="Lo-Fi">Lo-Fi</button>
+          <button class="genre-tab" data-category="Chill">Chill</button>
+          <button class="genre-tab" data-category="Electronic">Electronic</button>
+          <button class="genre-tab" data-category="Custom">My Uploads</button>
+        </nav>
+
+        <ul id="playlistView" class="track-queue">
+          <!-- Tracks injected via JS -->
+        </ul>
+      </section>
+
+      <!-- Center Stage: Vinyl Turntable Display -->
+      <section class="turntable-panel">
+        <div class="turntable-deck">
+          <div class="vinyl-rig">
+            <div class="vinyl-disc" id="vinylDisc">
+              <div class="vinyl-groove groove-outer"></div>
+              <div class="vinyl-groove groove-mid"></div>
+              <div class="vinyl-groove groove-inner"></div>
+              <div class="vinyl-label">
+                <img id="trackCover" src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=400&auto=format&fit=crop&q=80" alt="Current cover" />
+                <div class="center-hole"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="now-playing-info">
+            <span id="trackGenre" class="track-tag">Lo-Fi</span>
+            <h1 id="trackTitle" class="now-playing-title">Select a Track</h1>
+            <h2 id="trackArtist" class="now-playing-artist">AyeTune Player</h2>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Audio Controller Dock -->
+    <footer class="bottom-player-dock">
+      <!-- Left Info -->
+      <div class="dock-left">
+        <img id="dockThumbnail" src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=400&auto=format&fit=crop&q=80" alt="Mini cover" />
+        <div class="dock-info">
+          <span id="dockTitle" class="dock-title">Select a Track</span>
+          <span id="dockArtist" class="dock-artist">AyeTune</span>
+        </div>
+      </div>
+
+      <!-- Center Controls -->
+      <div class="dock-center">
+        <div class="transport-controls">
+          <button id="prevBtn" class="transport-btn" title="Previous">
+            <i class="fa-solid fa-backward-step"></i>
+          </button>
+          <button id="playBtn" class="transport-btn play-circle" title="Play">
+            <i class="fa-solid fa-play" id="playIcon"></i>
+          </button>
+          <button id="nextBtn" class="transport-btn" title="Next">
+            <i class="fa-solid fa-forward-step"></i>
+          </button>
+        </div>
+
+        <div class="scrubber-bar">
+          <span id="currentTime" class="time-readout">0:00</span>
+          <div class="slider-wrapper">
+            <input type="range" id="progressBar" min="0" max="100" value="0" />
+          </div>
+          <span id="durationTime" class="time-readout">0:00</span>
+        </div>
+      </div>
+
+      <!-- Right Volume -->
+      <div class="dock-right">
+        <button id="muteBtn" class="volume-btn" title="Mute">
+          <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
+        </button>
+        <div class="volume-slider-wrapper">
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.8" />
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <audio id="audioEngine" preload="metadata"></audio>
+  <script src="js/app.js"></script>
+</body>
+</html>
