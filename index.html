@@ -12,27 +12,31 @@
 </head>
 <body>
   <div class="app-container">
-    <!-- Top Bar -->
+    <!-- Top Header -->
     <header class="studio-header">
       <div class="brand">
         <i class="fa-solid fa-compact-disc brand-icon"></i>
         <span>AYE<b>TUNE</b></span>
       </div>
 
-      <div class="search-wrapper">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search tracks or artists..."
-          autocomplete="off"
-        />
-      </div>
+      <div class="header-right-tools">
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search tracks or artists..."
+            autocomplete="off"
+          />
+        </div>
 
-      <div class="header-actions">
-        <!-- Hidden input for uploading MP3 files -->
-        <input type="file" id="fileUpload" accept="audio/*" multiple style="display: none;" />
-        <button id="uploadBtn" class="upload-btn">
+        <input 
+          type="file" 
+          id="fileUpload" 
+          multiple 
+          style="display: none;" 
+        />
+        <button id="uploadBtn" class="upload-btn" type="button">
           <i class="fa-solid fa-cloud-arrow-up"></i> Add Song
         </button>
       </div>
@@ -40,29 +44,27 @@
 
     <!-- Main Workspace -->
     <main class="studio-workspace">
-      <!-- Left Panel: Library -->
+      <!-- Left Playlist Panel -->
       <section class="library-panel">
         <div class="panel-header">
-          <div>
-            <h3>Playlist</h3>
-            <p id="playlistCount">0 tracks available</p>
-          </div>
+          <h3>Playlist</h3>
+          <p id="playlistCount">5 tracks available</p>
         </div>
 
         <nav class="genre-tabs" id="categoryContainer">
-          <button class="genre-tab active" data-category="All">All Tracks</button>
-          <button class="genre-tab" data-category="Lo-Fi">Lo-Fi</button>
-          <button class="genre-tab" data-category="Chill">Chill</button>
-          <button class="genre-tab" data-category="Electronic">Electronic</button>
-          <button class="genre-tab" data-category="Custom">My Uploads</button>
+          <button class="genre-tab active" data-category="All" type="button">All Tracks</button>
+          <button class="genre-tab" data-category="Lo-Fi" type="button">Lo-Fi</button>
+          <button class="genre-tab" data-category="Chill" type="button">Chill</button>
+          <button class="genre-tab" data-category="Electronic" type="button">Electronic</button>
+          <button class="genre-tab" data-category="Custom" type="button">My Uploads</button>
         </nav>
 
         <ul id="playlistView" class="track-queue">
-          <!-- Tracks injected via JS -->
+          <!-- Populated by JS -->
         </ul>
       </section>
 
-      <!-- Center Stage: Vinyl Turntable Display -->
+      <!-- Center Turntable Stage -->
       <section class="turntable-panel">
         <div class="turntable-deck">
           <div class="vinyl-rig">
@@ -71,7 +73,11 @@
               <div class="vinyl-groove groove-mid"></div>
               <div class="vinyl-groove groove-inner"></div>
               <div class="vinyl-label">
-                <img id="trackCover" src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=400&auto=format&fit=crop&q=80" alt="Current cover" />
+                <img
+                  id="trackCover"
+                  src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=400&auto=format&fit=crop&q=80"
+                  alt="Track cover"
+                />
                 <div class="center-hole"></div>
               </div>
             </div>
@@ -79,34 +85,32 @@
 
           <div class="now-playing-info">
             <span id="trackGenre" class="track-tag">Lo-Fi</span>
-            <h1 id="trackTitle" class="now-playing-title">Select a Track</h1>
-            <h2 id="trackArtist" class="now-playing-artist">AyeTune Player</h2>
+            <h1 id="trackTitle" class="now-playing-title">Summer Breeze</h1>
+            <h2 id="trackArtist" class="now-playing-artist">Ason ID</h2>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Bottom Audio Controller Dock -->
+    <!-- Bottom Playback Dock -->
     <footer class="bottom-player-dock">
-      <!-- Left Info -->
       <div class="dock-left">
         <img id="dockThumbnail" src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=400&auto=format&fit=crop&q=80" alt="Mini cover" />
         <div class="dock-info">
-          <span id="dockTitle" class="dock-title">Select a Track</span>
-          <span id="dockArtist" class="dock-artist">AyeTune</span>
+          <span id="dockTitle" class="dock-title">Summer Breeze</span>
+          <span id="dockArtist" class="dock-artist">Ason ID</span>
         </div>
       </div>
 
-      <!-- Center Controls -->
-      <div class="dock-center">
+      <div class="dock-center-stage">
         <div class="transport-controls">
-          <button id="prevBtn" class="transport-btn" title="Previous">
+          <button id="prevBtn" class="transport-btn" type="button" title="Previous">
             <i class="fa-solid fa-backward-step"></i>
           </button>
-          <button id="playBtn" class="transport-btn play-circle" title="Play">
+          <button id="playBtn" class="transport-btn play-circle" type="button" title="Play">
             <i class="fa-solid fa-play" id="playIcon"></i>
           </button>
-          <button id="nextBtn" class="transport-btn" title="Next">
+          <button id="nextBtn" class="transport-btn" type="button" title="Next">
             <i class="fa-solid fa-forward-step"></i>
           </button>
         </div>
@@ -120,9 +124,8 @@
         </div>
       </div>
 
-      <!-- Right Volume -->
       <div class="dock-right">
-        <button id="muteBtn" class="volume-btn" title="Mute">
+        <button id="muteBtn" class="volume-btn" type="button" title="Mute">
           <i class="fa-solid fa-volume-high" id="volumeIcon"></i>
         </button>
         <div class="volume-slider-wrapper">
